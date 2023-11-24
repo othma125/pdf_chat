@@ -1,0 +1,4 @@
+CREATE DATABASE pdf_chat_db;
+CREATE USER admin WITH PASSWORD 'admin_pwd';
+GRANT ALL PRIVILEGES ON DATABASE pdf_chat_db TO admin;
+
