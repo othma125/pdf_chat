@@ -15,12 +15,14 @@ from os import getenv
 import sqlalchemy
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
+# import psycopg2
+import pymysql
 
 classes = {"User": User}
 
 
 class DBStorage:
-    """interaacts with the MySQL database"""
+    """interacts with the MySQL database"""
     __engine = None
     __session = None
 
@@ -30,7 +32,12 @@ class DBStorage:
         PASSWORD = getenv('PASSWORD')
         HOST = getenv('HOST')
         DB = getenv('DB')
-        self.__engine = create_engine('postgresql+psycopg2://{}:{}@{}/{}'.
+        # self.__engine = create_engine('postgresql+psycopg2://{}:{}@{}/{}'.
+        #                               format(USER,
+        #                                      PASSWORD,
+        #                                      HOST,
+        #                                      DB))
+        self.__engine = create_engine('mysql+pymysql://{}:{}@{}/{}'.
                                       format(USER,
                                              PASSWORD,
                                              HOST,
@@ -45,7 +52,7 @@ class DBStorage:
                 for obj in objs:
                     key = obj.__class__.__name__ + '.' + obj.id
                     new_dict[key] = obj
-        return (new_dict)
+        return new_dict
 
     def new(self, obj):
         """add the object to the current database session"""
@@ -83,7 +90,6 @@ class DBStorage:
         for value in all_cls.values():
             if (value.id == id):
                 return value
-
         return None
 
     def count(self, cls=None):

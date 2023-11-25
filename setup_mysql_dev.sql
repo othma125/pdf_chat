@@ -1,4 +1,4 @@
-CREATE DATABASE pdf_chat_db;
-CREATE USER admin WITH PASSWORD 'admin_pwd';
-GRANT ALL PRIVILEGES ON DATABASE pdf_chat_db TO admin;
+CREATE DATABASE IF NOT EXISTS pdf_chat_db;
+CREATE USER 'admin'@'localhost' IDENTIFIED BY 'admin_pwd';
+GRANT ALL PRIVILEGES ON pdf_chat_db.* TO 'admin'@'localhost';
 

@@ -1,6 +1,6 @@
-
+USE pdf_chat_db;
 CREATE TABLE IF NOT EXISTS users (
-  id UUID PRIMARY KEY,
+  id VARCHAR(36) PRIMARY KEY,
   created_at TIMESTAMP,
   updated_at TIMESTAMP,
   email VARCHAR(128) NOT NULL,
