@@ -26,16 +26,15 @@ class DBStorage:
 
     def __init__(self):
         """Instantiate a DBStorage object"""
-        HBNB_POSTGRES_USER = getenv('USER')
-        HBNB_POSTGRES_PASSWORD = getenv('PASSWORD')
-        HBNB_POSTGRES_HOST = getenv('HOST')
-        HBNB_POSTGRES_DB = getenv('DB')
-        HBNB_ENV = getenv('HBNB_ENV')
+        USER = getenv('USER') # USER='admin' PASSWORD='admin_pwd' DB='pdf_chat_db' HOST='localhost'
+        PASSWORD = getenv('PASSWORD')
+        HOST = getenv('HOST')
+        DB = getenv('DB')
         self.__engine = create_engine('postgresql+psycopg2://{}:{}@{}/{}'.
-                                      format(HBNB_POSTGRES_USER,
-                                             HBNB_POSTGRES_PASSWORD,
-                                             HBNB_POSTGRES_HOST,
-                                             HBNB_POSTGRES_DB))
+                                      format(USER,
+                                             PASSWORD,
+                                             HOST,
+                                             DB))
 
     def all(self, cls=None):
         """query on the current database session"""
