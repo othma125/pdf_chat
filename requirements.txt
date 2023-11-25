@@ -1,6 +1,6 @@
 Flask
 SQLAlchemy
-psycopg2-binary
+pymysql
 Flask
 flask_cors
 cryptography
