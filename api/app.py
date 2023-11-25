@@ -12,14 +12,13 @@ app = Flask(__name__)
 app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
 app.register_blueprint(app_views)
 CORS(app, resources={r"/api/*": {"origins": "*"}})
+
 USER = getenv('USER')
 PASSWORD = getenv('PASSWORD')
 HOST = getenv('HOST')
 DB = getenv('DB')
-
-
-# Set the correct host name for the database connection
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://{}:{}@{}/{}'.format(USER, PASSWORD, HOST, DB)
+# USER='admin' PASSWORD='admin_pwd' DB='pdf_chat_db' HOST='localhost' python3 -m api.app
 
 
 
