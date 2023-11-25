@@ -28,7 +28,8 @@ class DBStorage:
 
     def __init__(self):
         """Instantiate a DBStorage object"""
-        USER = getenv('USER') # USER='admin' PASSWORD='admin_pwd' DB='pdf_chat_db' HOST='localhost'
+        # USER='admin' PASSWORD='admin_pwd' DB='pdf_chat_db' HOST='localhost'
+        USER = getenv('USER')
         PASSWORD = getenv('PASSWORD')
         HOST = getenv('HOST')
         DB = getenv('DB')
