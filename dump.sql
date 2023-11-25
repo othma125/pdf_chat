@@ -1,0 +1,42 @@
+
+CREATE TABLE IF NOT EXISTS users (
+  id UUID PRIMARY KEY,
+  created_at TIMESTAMP,
+  updated_at TIMESTAMP,
+  email VARCHAR(128) NOT NULL,
+  password VARCHAR(128) NOT NULL,
+  first_name VARCHAR(128),
+  last_name VARCHAR(128)
+);
+INSERT INTO users VALUES 
+('00a11245-12fa-436e-9ccc-967417f8c30a','2017-03-25 02:17:06','2017-03-25 02:17:06','noemail6@gmail.com','pwd6','Todd','Seanez'),
+('00e93fc3-53ff-4da4-8e72-faa5216f81bb','2017-03-25 02:17:06','2017-03-25 02:17:06','noemail28@gmail.com','pwd28','Richard','Steere'),
+('150e591e-486b-48ee-be42-4aecba665020','2017-03-25 02:17:06','2017-03-25 02:17:06','noemail23@gmail.com','pwd23','Cecilia','Boes'),
+('30a890e4-a62c-44f9-abc0-07e2c74021da','2017-03-25 02:17:06','2017-03-25 02:17:06','noemail2@gmail.com','pwd2','David','Meador'),
+('32c11d3d-99a1-4406-ab41-7b6ccb7dd760','2017-03-25 02:17:06','2017-03-25 02:17:06','noemail18@gmail.com','pwd18','Susan','Finney'),
+('3ea61b06-e22a-459b-bb96-d900fb8f843a','2017-03-25 02:17:06','2017-03-25 02:17:06','noemail8@gmail.com','pwd8','Melissa','Ward'),
+('3fda0d5c-fea4-4920-bc91-6e6c6663d161','2017-03-25 02:17:06','2017-03-25 02:17:06','noemail12@gmail.com','pwd12','Robert','Graham'),
+('426624f6-84a9-4ec4-84f3-7655dc70e86e','2017-03-25 02:17:06','2017-03-25 02:17:06','noemail19@gmail.com','pwd19','Gail','Mccarthy'),
+('5e181cc6-cac7-49e9-a7a1-3095b0f9010b','2017-03-25 02:17:06','2017-03-25 02:17:06','noemail21@gmail.com','pwd21','Rebecca','Stapleton'),
+('61302be9-4b31-4be0-92fc-d0dda253e167','2017-03-25 02:17:06','2017-03-25 02:17:06','noemail13@gmail.com','pwd13','Virginia','Lewis'),
+('70b18dcc-08ef-4040-91cf-4075973d320a','2017-03-25 02:17:06','2017-03-25 02:17:06','noemail9@gmail.com','pwd9','Duane','Smiley'),
+('7231eaa1-400f-4cb5-a867-f5eba8adbb81','2017-03-25 02:17:06','2017-03-25 02:17:06','noemail11@gmail.com','pwd11','Betty','Hicks'),
+('7771bbe9-92ab-46d1-a636-864526361d7d','2017-03-25 02:17:06','2017-03-25 02:17:06','noemail16@gmail.com','pwd16','Lynn','Melton'),
+('8394fd35-8a8a-479f-a398-48f53b4a6554','2017-03-25 02:17:06','2017-03-25 02:17:06','noemail3@gmail.com','pwd3','Emily','Dancy'),
+('85651506-c13c-4c2f-9c79-8fbebc048e39','2017-03-25 02:17:06','2017-03-25 02:17:06','noemail15@gmail.com','pwd15','Fredrick','Morasca'),
+('887dcd8d-d5ee-48de-9626-73ff4ea732fa','2017-03-25 02:17:06','2017-03-25 02:17:06','noemail27@gmail.com','pwd27','Walter','Olsen'),
+('91e27a07-1f47-43c9-b851-60c6882abcd3','2017-03-25 02:17:06','2017-03-25 02:17:06','noemail5@gmail.com','pwd5','Olivia','Hampton'),
+('9e7b2291-3bff-43b9-9241-8ff685e7a6dd','2017-03-25 02:17:06','2017-03-25 02:17:06','noemail24@gmail.com','pwd24','Carol','Hass'),
+('9eec6c06-5918-4867-833a-face490d4715','2017-03-25 02:17:06','2017-03-25 02:17:06','noemail1@gmail.com','pwd1','Jacqueline','Watkins'),
+('aa92d1ff-f0ad-4ba3-9c20-2afef207bf70','2017-03-25 02:17:06','2017-03-25 02:17:06','noemail10@gmail.com','pwd10','John','Hooten'),
+('b6160096-c503-4909-a674-7bfbddc8cc45','2017-03-25 02:17:06','2017-03-25 02:17:06','noemail25@gmail.com','pwd25','Melida','Wright'),
+('c81d66a3-f0fe-44e9-9f31-cb3c6f27db4e','2017-03-25 02:17:06','2017-03-25 02:17:06','noemail22@gmail.com','pwd22','Gina','Jauregui'),
+('cf1780e6-d294-4113-8749-1c728b9e3f81','2017-03-25 02:17:06','2017-03-25 02:17:06','noemail4@gmail.com','pwd4','Hazel','Kyung'),
+('d622edfa-fc35-4732-b5ec-a15d794267ec','2017-03-25 02:17:06','2017-03-25 02:17:06','noemail7@gmail.com','pwd7','Roy','Grant'),
+('df668e22-e344-4c89-a050-e5ad211cbaa6','2017-03-25 02:17:06','2017-03-25 02:17:06','noemail14@gmail.com','pwd14','Leo','Minnick'),
+('dfc6b9a5-6673-4f1b-83cd-0dfa800c0d08','2017-03-25 02:17:06','2017-03-25 02:17:06','noemail26@gmail.com','pwd26','James','Diaz'),
+('dfed3ea3-c133-47e8-8cfa-312eecbcc56d','2017-03-25 02:17:06','2017-03-25 02:17:06','noemail0@gmail.com','pwd0','Georgia','Boshard'),
+('f33e2624-520b-4bc2-b6a0-190ee1d41855','2017-03-25 02:17:06','2017-03-25 02:17:06','noemail17@gmail.com','pwd17','Tracy','Tillman'),
+('f9b11370-f316-492c-92da-014d7bce7213','2017-03-25 02:17:06','2017-03-25 02:17:06','noemail29@gmail.com','pwd29','Dawn','Kitchen'),
+('fa44780d-ac48-41ab-9dd0-ac54a15755cf','2017-03-25 02:17:06','2017-03-25 02:17:06','noemail20@gmail.com','pwd20','Leon','Sarro');
+
