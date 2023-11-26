@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "clsx": "^2.0.0",
+    "lucide-react": "^0.293.0",
+    "tailwind-merge": "^2.0.0"
+  }
+}
