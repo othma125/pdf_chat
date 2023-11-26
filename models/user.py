@@ -32,7 +32,7 @@ class User(BaseModel, Base):
         return md5(pwd.encode()).hexdigest() == self.password
 
     @classmethod
-    def is_valid_email(email):
+    def is_valid_email(cls, email):
         """validates an email address"""
         email_regex = r'^[\w\.-]+@[\w\.-]+\.\w+$'
         return re.match(email_regex, email) is not None
