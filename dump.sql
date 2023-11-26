@@ -1,4 +1,3 @@
-USE pdf_chat_db;
 CREATE TABLE IF NOT EXISTS users (
   id VARCHAR(36) PRIMARY KEY,
   created_at TIMESTAMP,
