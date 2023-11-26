@@ -80,7 +80,7 @@ def login_user():
     if 'password' not in data:
         abort(400, description="Missing password")
 
-    if not user.is_valid_password(data['password']):
+    if not User.is_valid_email(data['email']):
         abort(400, description="Invalid email format")
 
     user = storage.get_by(User, 'email', data['email'])
