@@ -6,6 +6,7 @@ from models.base_model import BaseModel, Base
 import sqlalchemy
 from sqlalchemy import Column, String
 from hashlib import md5
+import re
 
 
 class User(BaseModel, Base):
@@ -25,3 +26,13 @@ class User(BaseModel, Base):
         if name == "password":
             value = md5(value.encode()).hexdigest()
         super().__setattr__(name, value)
+
+    def is_valid_password(self, pwd):
+        """validates a password"""
+        return md5(pwd.encode()).hexdigest() == self.password
+
+    @classmethod
+    def is_valid_email(email):
+        """validates an email address"""
+        email_regex = r'^[\w\.-]+@[\w\.-]+\.\w+$'
+        return re.match(email_regex, email) is not None

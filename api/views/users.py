@@ -32,7 +32,6 @@ def delete_user(user_id):
     """
     Deletes a user Object
     """
-
     user = storage.get(User, user_id)
 
     if not user:
@@ -49,18 +48,50 @@ def post_user():
     """
     Creates a user
     """
-    if not request.get_json():
+    if not request.is_json:
         abort(400, description="Not a JSON")
 
-    if 'email' not in request.get_json():
+    data = request.get_json()
+
+    if 'email' not in data:
         abort(400, description="Missing email")
-    if 'password' not in request.get_json():
+    if 'password' not in data:
         abort(400, description="Missing password")
 
-    data = request.get_json()
+    if not user.is_valid_password(data['password']):
+        abort(400, description="Invalid email format")
     instance = User(**data)
     instance.save()
     return make_response(jsonify(instance.to_dict()), 201)
+
+
+@app_views.route('/users/login', methods=['POST'], strict_slashes=False)
+def login_user():
+    """
+    User login
+    """
+    if not request.is_json:
+        abort(400, description="Not a JSON")
+
+    data = request.get_json()
+
+    if 'email' not in data:
+        abort(400, description="Missing email")
+    if 'password' not in data:
+        abort(400, description="Missing password")
+
+    if not user.is_valid_password(data['password']):
+        abort(400, description="Invalid email format")
+
+    user = storage.get_by(User, 'email', data['email'])
+
+    if not user:
+        abort(401, description="Invalid email")
+
+    if not user.is_valid_password(data['password']):
+        abort(401, description="Invalid password")
+
+    return make_response(jsonify(user.to_dict()), 200)
 
 
 @app_views.route('/users/<user_id>', methods=['PUT'], strict_slashes=False)
@@ -73,10 +104,10 @@ def put_user(user_id):
     if not user:
         abort(404)
 
-    if not request.get_json():
+    if not request.is_json:
         abort(400, description="Not a JSON")
 
-    ignore = ['id', 'email', 'created_at', 'updated_at']
+    ignore = 'id', 'email', 'created_at', 'updated_at'
 
     data = request.get_json()
     for key, value in data.items():
