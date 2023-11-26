@@ -4,3 +4,4 @@ pymysql
 Flask
 flask_cors
 cryptography
+flasgger
