@@ -6,7 +6,7 @@ from models.base_model import BaseModel, Base
 import sqlalchemy
 from sqlalchemy import Column, String
 from hashlib import md5
-from re import match
+from re import match, compile
 
 
 class User(BaseModel, Base):
@@ -34,5 +34,4 @@ class User(BaseModel, Base):
     @classmethod
     def is_valid_email(cls, email):
         """validates an email address"""
-        email_regex = r'^[\w\.-]+@[\w\.-]+\.\w+$'
-        return match(email_regex, email) is not None
+        return compile(r'^[\w\.-]+@[\w\.-]+\.\w+$').match(email)

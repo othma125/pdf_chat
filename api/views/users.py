@@ -58,7 +58,6 @@ def post_user():
         abort(400, description="Missing email")
     if 'password' not in data:
         abort(400, description="Missing password")
-
     if not User.is_valid_email(data['email']):
         abort(400, description="Invalid email format")
 
@@ -83,7 +82,6 @@ def login_user():
         abort(400, description="Missing email")
     if 'password' not in data:
         abort(400, description="Missing password")
-
     if not User.is_valid_email(data['email']):
         abort(400, description="Invalid email format")
 
@@ -91,7 +89,6 @@ def login_user():
 
     if not user:
         abort(401, description="Invalid email")
-
     if not user.is_valid_password(data['password']):
         abort(401, description="Invalid password")
 
