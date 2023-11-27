@@ -105,16 +105,19 @@ def put_user(user_id):
     user = storage.get(User, user_id)
 
     if not user:
-        abort(404)
+        abort(404, description="Not found")
 
     if not request.is_json:
         abort(400, description="Not a JSON")
 
     ignore = 'id', 'email', 'created_at', 'updated_at'
-
+    c = True
     data = request.get_json()
     for key, value in data.items():
         if key not in ignore:
             setattr(user, key, value)
+            c = False
+    if c:
+        abort(400, description="Nothing changed")
     storage.save()
     return make_response(jsonify(user.to_dict()), 200)
