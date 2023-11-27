@@ -53,15 +53,14 @@ def post_user():
     data = request.get_json()
 
     if 'email' not in data:
-        return make_response(jsonify({'error': "Missing email"}), 400)
+        abort(400, description="Missing email")
     if 'password' not in data:
         abort(400, description="Missing password")
-        return make_response(jsonify({'error': "Missing password"}), 400)
     if not User.is_valid_email(data['email']):
-        return make_response(jsonify({'error': "Invalid email format"}), 400)
+        abort(400, description="Invalid email format")
 
     if storage.get_by(User, 'email', data['email']):
-        return make_response(jsonify({'error': "Email already exists"}), 400)
+        abort(400, description="Email already exists")
     instance = User(**data)
     instance.save()
     return make_response(jsonify(instance.to_dict()), 201)
@@ -78,18 +77,18 @@ def login_user():
     data = request.get_json()
 
     if 'email' not in data:
-        return make_response(jsonify({'error': "Missing email"}), 400)
+        abort(400, description="Missing email")
     if 'password' not in data:
-        return make_response(jsonify({'error': "Missing password"}), 400)
+        abort(400, description="Missing password")
     if not User.is_valid_email(data['email']):
-        return make_response(jsonify({'error': "Invalid email format"}), 400)
+        abort(400, description="Invalid email format")
 
     user = storage.get_by(User, 'email', data['email'])
 
     if not user:
-        return make_response(jsonify({'error': "Invalid email"}), 400)
+        abort(400, description="Invalid email")
     if not user.is_valid_password(data['password']):
-        return make_response(jsonify({'error': "Invalid password"}), 400)
+        abort(400, description="Invalid password")
 
     return make_response(jsonify(user.to_dict()), 200)
 
@@ -103,9 +102,8 @@ def put_user(user_id):
 
     if not user:
         abort(404, description="Not found")
-
     if not request.is_json:
-        return make_response(jsonify({'error': "Not a JSON"}), 400)
+        abort(400, description="Not a JSON")
 
     ignore = 'id', 'email', 'created_at', 'updated_at'
     c = True
@@ -115,6 +113,6 @@ def put_user(user_id):
             setattr(user, key, value)
             c = False
     if c:
-        return make_response(jsonify({'error': "Nothing changed"}), 400)
+        abort(400, description="Nothing changed")
     user.save()
     return make_response(jsonify(user.to_dict()), 200)
