@@ -34,6 +34,18 @@ def not_found(error):
     return make_response(jsonify({'error': "Not found"}), 404)
 
 
+@app.errorhandler(400)
+def not_found(error):
+    """ 404 Error
+    ---
+    responses:
+      404:
+        description: a resource was not found
+    """
+    message = error.description if error.description else "Bad Request"
+    return make_response(jsonify({'error': message}), 400)
+
+
 app.config['SWAGGER'] = {
     'title': 'pdf chat Restful API',
     'uiversion': 3
