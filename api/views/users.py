@@ -6,6 +6,7 @@ from api.views import app_views
 from flask import abort, jsonify, make_response, request
 # from pprint import pprint
 
+
 @app_views.route('/users', methods=['GET'], strict_slashes=False)
 def get_users():
     """

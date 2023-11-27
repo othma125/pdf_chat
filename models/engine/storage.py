@@ -71,7 +71,8 @@ class DBStorage:
         """
         if cls not in classes.values():
             return None
-        return self.__session.query(cls).filter(getattr(cls, key) == value).first()
+        return self.__session.query(cls)\
+            .filter(getattr(cls, key) == value).first()
 
     def new(self, obj):
         """add the object to the current database session"""
