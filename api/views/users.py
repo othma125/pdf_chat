@@ -119,5 +119,5 @@ def put_user(user_id):
             c = False
     if c:
         abort(400, description="Nothing changed")
-    storage.save()
+    user.save()
     return make_response(jsonify(user.to_dict()), 200)
