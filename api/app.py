@@ -35,7 +35,7 @@ def not_found(error):
 
 
 @app.errorhandler(400)
-def not_found(error):
+def bad_request(error):
     """ 404 Error
     ---
     responses:
