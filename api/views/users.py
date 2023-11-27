@@ -43,7 +43,7 @@ def delete_user(user_id):
     return make_response(jsonify({}), 200)
 
 
-@app_views.route('/users', methods=['POST'], strict_slashes=False)
+@app_views.route('/users/sign-up', methods=['POST'], strict_slashes=False)
 def post_user():
     """
     Creates a user
@@ -60,6 +60,9 @@ def post_user():
 
     if not User.is_valid_email(data['email']):
         abort(400, description="Invalid email format")
+
+    if storage.get_by(User, 'email', data['email']):
+        abort(401, description="Email already exists")
     instance = User(**data)
     instance.save()
     return make_response(jsonify(instance.to_dict()), 201)
