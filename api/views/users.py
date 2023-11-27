@@ -101,7 +101,7 @@ def put_user(user_id):
     user = storage.get(User, user_id)
 
     if not user:
-        abort(404, description="Not found")
+        abort(404)
     if not request.is_json:
         abort(400, description="Not a JSON")
 
