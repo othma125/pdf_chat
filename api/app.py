@@ -14,8 +14,7 @@ app.register_blueprint(app_views)
 CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 
-# USER=admin PASSWORD=admin_pwd DB=pdf_chat_db
-# HOST=localhost python3 -m api.app
+# USER=admin PASSWORD=admin_pwd DB=pdf_chat_db HOST=localhost python3 -m api.app
 
 
 @app.teardown_appcontext
