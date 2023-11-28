@@ -4,9 +4,6 @@ from models import storage
 from api.views import app_views
 from flask import Flask, make_response, jsonify
 from flask_cors import CORS
-from flasgger import Swagger
-from flasgger.utils import swag_from
-# from os import getenv
 
 app = Flask(__name__)
 app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
@@ -46,13 +43,6 @@ def bad_request(error):
     return make_response(jsonify({'error': message}), 400)
 
 
-app.config['SWAGGER'] = {
-    'title': 'pdf chat Restful API',
-    'uiversion': 3
-}
-
-Swagger(app)
-
 if __name__ == "__main__":
     """ Main Function """
-    app.run(host='0.0.0.0', port=3000, threaded=True, debug=True)
+    app.run(host='0.0.0.0', port=3000, debug=True)

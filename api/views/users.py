@@ -113,6 +113,6 @@ def put_user(user_id):
             setattr(user, key, value)
             c = False
     if c:
-        abort(400, description="Nothing changed")
+        abort(400, description="No attribute is changed")
     user.save()
     return make_response(jsonify(user.to_dict()), 200)
