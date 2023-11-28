@@ -5,7 +5,7 @@ Contains the class DBStorage
 
 import models
 from models.base_model import BaseModel, Base
-# from models.amenity import Amenity
+from models.document import Document
 # from models.city import City
 # from models.place import Place
 # from models.review import Review
@@ -18,7 +18,7 @@ from sqlalchemy.orm import scoped_session, sessionmaker
 # import psycopg2
 import pymysql
 
-classes = {"User": User}
+classes = {"User": User, "Document": Document}
 
 
 class DBStorage:

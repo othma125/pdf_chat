@@ -38,7 +38,6 @@ def delete_user(user_id):
 
     storage.delete(user)
     storage.save()
-
     return make_response(jsonify({}), 200)
 
 
@@ -61,9 +60,10 @@ def post_user():
 
     if storage.get_by(User, 'email', data['email']):
         abort(400, description="Email already exists")
-    instance = User(**data)
-    instance.save()
-    return make_response(jsonify(instance.to_dict()), 201)
+
+    user = User(**data)
+    user.save()
+    return make_response(jsonify(user.to_dict()), 201)
 
 
 @app_views.route('/users/login', methods=['POST'], strict_slashes=False)

@@ -16,6 +16,9 @@ class User(BaseModel, Base):
     password = Column(String(128), nullable=False)
     first_name = Column(String(128), nullable=True)
     last_name = Column(String(128), nullable=True)
+    documents = relationship("Document",
+                             backref="user",
+                             cascade="all, delete, delete-orphan")
 
     def __init__(self, *args, **kwargs):
         """initializes user"""
@@ -35,3 +38,9 @@ class User(BaseModel, Base):
     def is_valid_email(cls, email):
         """validates an email address"""
         return compile(r'^[\w\.-]+@[\w\.-]+\.\w+$').match(email)
+    @property
+    def get_documents(self):
+        """getter for list of documents related to the user"""
+        from models.document import Document
+        objs = models.storage.all(Document).values()
+        return []
