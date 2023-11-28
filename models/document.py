@@ -4,13 +4,12 @@ import models
 from models.base_model import BaseModel, Base
 import sqlalchemy
 from sqlalchemy import Column, String, ForeignKey
-from sqlalchemy.orm import relationship
 
 
 class Document(BaseModel, Base):
     """Document class """
     __tablename__ = 'documents'
-    UserID = Column(String(60), ForeignKey('users.UserID'))
+    UserID = Column(String(60), ForeignKey('users.id'))
     FileName = Column(String(255))
     Status = Column(String(10)) #Status (e.g., "uploaded", "processed", "indexed")
 

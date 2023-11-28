@@ -5,6 +5,7 @@ import models
 from models.base_model import BaseModel, Base
 import sqlalchemy
 from sqlalchemy import Column, String
+from sqlalchemy.orm import relationship
 from hashlib import md5
 from re import match, compile
 
