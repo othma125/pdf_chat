@@ -30,6 +30,17 @@ def get_document(document_id):
     return jsonify(doc.to_dict())
 
 
+@app_views.route('/documents', methods=['GET'], strict_slashes=False)
+def get_document(document_id):
+    """
+    Retrieves all documents
+    """
+    docs = storage.all(Document).values()
+    if not docs:
+        abort(404)
+    return jsonify([doc.to_dict() for doc in docs])
+
+
 @app_views.route('/documents/<document_id>/', methods=['DELETE'], strict_slashes=False)
 def delete_document(document_id):
     """
