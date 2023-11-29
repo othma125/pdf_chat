@@ -13,9 +13,7 @@ class TextBlock(BaseModel, Base):
     DocumentID = Column(String(60), ForeignKey('documents.id'))
     TextContent = Column(String(255), nullable=False)
     PageNumber = Column(Integer)
-    
 
     def __init__(self, *args, **kwargs):
         """initializes text block"""
         super().__init__(*args, **kwargs)
-

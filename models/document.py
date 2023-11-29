@@ -14,20 +14,19 @@ class Document(BaseModel, Base):
     UserID = Column(String(60), ForeignKey('users.id'))
     FileName = Column(String(255), nullable=False)
     URL = Column(String(255), nullable=False)
-    Status = Column(String(10), default="uploaded") #Status (e.g., "uploaded", "processed", "indexed")
+    Status = Column(String(10), default="uploaded")   # Status (e.g., "uploaded", "processed", "indexed")
     TextBlocks = relationship("TextBlock",
-                                   backref="document",
-                                   cascade="all, delete, delete-orphan")
+                              backref="document",
+                              cascade="all, delete, delete-orphan")
 
     def __init__(self, *args, **kwargs):
         """initializes document"""
         super().__init__(*args, **kwargs)
-    
 
     def __init__(self, *args, **kwargs):
         """initializes document"""
         super().__init__(*args, **kwargs)
-    
+
     @classmethod
     def is_valid_url(cls, url):
         try:

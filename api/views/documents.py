@@ -19,7 +19,8 @@ def get_user_documents(user_id):
     return jsonify([doc.to_dict() for doc in user.documents])
 
 
-@app_views.route('/documents/<document_id>/', methods=['GET'], strict_slashes=False)
+@app_views.route('/documents/<document_id>/', methods=['GET'],
+                 strict_slashes=False)
 def get_document(document_id):
     """
     Retrieves a specific document based on id
@@ -41,7 +42,8 @@ def get_all_document():
     return jsonify([doc.to_dict() for doc in docs])
 
 
-@app_views.route('/documents/<document_id>/', methods=['DELETE'], strict_slashes=False)
+@app_views.route('/documents/<document_id>/', methods=['DELETE'],
+                 strict_slashes=False)
 def delete_document(document_id):
     """
     Deletes a document based on id
@@ -74,14 +76,15 @@ def post_document(user_id):
         abort(400, description="Missing URL")
     if not Document.is_valid_url(data['URL']):
         abort(400, description="Invalid URL format")
-    
+
     doc = Document(**data)
     doc.UserID = user.id
     doc.save()
     return make_response(jsonify(doc.to_dict()), 201)
 
 
-@app_views.route('/documents/<document_id>', methods=['PUT'], strict_slashes=False)
+@app_views.route('/documents/<document_id>', methods=['PUT'],
+                 strict_slashes=False)
 def put_document(document_id):
     """
     Updates a document based on id

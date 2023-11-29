@@ -16,7 +16,8 @@ def get_document_text_blocks(document_id):
     document = storage.get(Document, document_id)
     if not document:
         abort(404)
-    return jsonify([text_block.to_dict() for text_block in document.text_blocks])
+    return jsonify([text_block.to_dict()
+                    for text_block in document.text_blocks])
 
 
 @app_views.route('/text_blocks/', methods=['GET'],
