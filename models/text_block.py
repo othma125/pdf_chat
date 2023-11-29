@@ -10,8 +10,8 @@ from sqlalchemy.orm import relationship
 class TextBlock(BaseModel, Base):
     """Representation of a text block """
     __tablename__ = 'text_blocks'
-    DocumentID = Column(Integer, ForeignKey('documents.DocumentID'))
-    TextContent = Column(String(255))
+    DocumentID = Column(String(60), ForeignKey('documents.id'))
+    TextContent = Column(String(255), nullable=False)
     PageNumber = Column(Integer)
     
 

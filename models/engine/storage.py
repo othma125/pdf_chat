@@ -5,9 +5,9 @@ Contains the class DBStorage
 
 import models
 from models.base_model import BaseModel, Base
-from models.document import Document
-
 from models.user import User
+from models.document import Document
+from models.text_block import TextBlock
 from os import getenv
 import sqlalchemy
 from sqlalchemy import create_engine
@@ -15,7 +15,9 @@ from sqlalchemy.orm import scoped_session, sessionmaker
 # import psycopg2
 import pymysql
 
-classes = {"User": User, "Document": Document}
+classes = {"User": User,
+           "Document": Document,
+           "TextBlock": TextBlock}
 
 
 class DBStorage:
@@ -67,7 +69,7 @@ class DBStorage:
         """
         if cls not in classes.values():
             return None
-        return self.__session.query(cls)\
+        return self.__session.query(cls) \
             .filter(getattr(cls, key) == value).all()
 
     def new(self, obj):
