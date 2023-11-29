@@ -31,7 +31,7 @@ def get_document(document_id):
 
 
 @app_views.route('/documents', methods=['GET'], strict_slashes=False)
-def get_all_document(document_id):
+def get_all_document():
     """
     Retrieves all documents
     """
