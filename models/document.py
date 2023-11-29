@@ -4,6 +4,7 @@ import models
 from models.base_model import BaseModel, Base
 import sqlalchemy
 from sqlalchemy import Column, String, ForeignKey
+from sqlalchemy.orm import relationship
 import urllib.parse
 
 
@@ -14,6 +15,9 @@ class Document(BaseModel, Base):
     FileName = Column(String(255), nullable=False)
     URL = Column(String(255), nullable=False)
     Status = Column(String(10), default="uploaded") #Status (e.g., "uploaded", "processed", "indexed")
+    TextBlocks = relationship("TextBlock",
+                                   backref="document",
+                                   cascade="all, delete, delete-orphan")
 
     def __init__(self, *args, **kwargs):
         """initializes document"""

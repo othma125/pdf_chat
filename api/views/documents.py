@@ -9,7 +9,7 @@ from flask import abort, jsonify, make_response, request
 
 @app_views.route('/users/<user_id>/documents', methods=['GET'],
                  strict_slashes=False)
-def get_documents(user_id):
+def get_user_documents(user_id):
     """
     Retrieves the list of all documents objects of a specific user
     """
@@ -31,7 +31,7 @@ def get_document(document_id):
 
 
 @app_views.route('/documents', methods=['GET'], strict_slashes=False)
-def get_document(document_id):
+def get_all_document(document_id):
     """
     Retrieves all documents
     """

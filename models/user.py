@@ -39,10 +39,3 @@ class User(BaseModel, Base):
     def is_valid_email(cls, email):
         """validates an email address"""
         return compile(r'^[\w\.-]+@[\w\.-]+\.\w+$').match(email)
-        
-    @property
-    def get_documents(self):
-        """getter for list of documents related to the user"""
-        from models.document import Document
-        objs = models.storage.all(Document).values()
-        return [obj for obj in objs if obj.UserID == self.id]

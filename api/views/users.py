@@ -58,7 +58,7 @@ def post_user():
     if not User.is_valid_email(data['email']):
         abort(400, description="Invalid email format")
 
-    if storage.get_by(User, 'email', data['email']):
+    if len(storage.get_by(User, 'email', data['email'])) > 0:
         abort(400, description="Email already exists")
 
     user = User(**data)
@@ -83,7 +83,7 @@ def login_user():
     if not User.is_valid_email(data['email']):
         abort(400, description="Invalid email format")
 
-    user = storage.get_by(User, 'email', data['email'])
+    user = storage.get_by(User, 'email', data['email'])[0]
 
     if not user:
         abort(400, description="Invalid email")
@@ -106,7 +106,7 @@ def put_user(user_id):
         abort(400, description="Not a JSON")
 
     ignore = 'id', 'email', 'created_at', 'updated_at'
-    c = True
+    c: bool = True
     data = request.get_json()
     for key, value in data.items():
         if key not in ignore:
