@@ -22,8 +22,7 @@ def close_db(error):
 
 @app.errorhandler(404)
 def not_found(error):
-    """ 404 Error
-    ---
+    """
     responses:
       404:
         description: a resource was not found
@@ -33,13 +32,12 @@ def not_found(error):
 
 @app.errorhandler(400)
 def bad_request(error):
-    """ 404 Error
-    ---
+    """
     responses:
       404:
-        description: a resource was not found
+        description: dynamic message displayed
     """
-    message = error.description if error.description else "Bad Request"
+    message = error.description if error.description and error.description != '' else "Bad Request"
     return make_response(jsonify({'error': message}), 400)
 
 
