@@ -8,7 +8,7 @@ from models.base_model import BaseModel, Base
 from models.user import User
 from models.document import Document
 from models.text_block import TextBlock
-from os import getenv
+import os
 import sqlalchemy
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
@@ -27,20 +27,22 @@ class DBStorage:
 
     def __init__(self):
         """Instantiate a DBStorage object"""
-        USER = getenv('USER')
-        PASSWORD = getenv('PASSWORD')
-        HOST = getenv('HOST')
-        DB = getenv('DB')
+        user = os.getenv('USER')
+        password = os.getenv('PASSWORD')
+        db = os.getenv('DB')
+        host = os.getenv('HOST')
+
         # self.__engine = create_engine('postgresql+psycopg2://{}:{}@{}/{}'.
-        #                               format(USER,
-        #                                      PASSWORD,
-        #                                      HOST,
-        #                                      DB))
+        #   format(user,  # USER
+        #          password,  # PASSWORD
+        #          host,  # HOST
+        #          db))  # DB
+
         self.__engine = create_engine('mysql+pymysql://{}:{}@{}/{}'.
-                                      format(USER,
-                                             PASSWORD,
-                                             HOST,
-                                             DB))
+                                      format(user,  # USER
+                                             password,  # PASSWORD
+                                             host,  # HOST
+                                             db))  # DB
 
     def all(self, cls=None):
         """query on the current database session"""

@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 """ Flask Application """
+import models
+import api
 from models import storage
 from api.views import app_views
 from flask import Flask, make_response, jsonify
@@ -13,6 +15,10 @@ CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 # USER=admin PASSWORD=admin_pwd DB=pdf_chat_db HOST=localhost python3 -m api.app
 
+@app.route('/status', methods=['GET'], strict_slashes=False)
+def status():
+    """ Status of API """
+    return jsonify({"status": "OK"})
 
 @app.teardown_appcontext
 def close_db(error):
