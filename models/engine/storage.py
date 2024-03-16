@@ -32,12 +32,6 @@ class DBStorage:
         db = os.getenv('DB')
         host = os.getenv('HOST')
 
-        # self.__engine = create_engine('postgresql+psycopg2://{}:{}@{}/{}'.
-        #   format(user,  # USER
-        #          password,  # PASSWORD
-        #          host,  # HOST
-        #          db))  # DB
-
         self.__engine = create_engine('mysql+pymysql://{}:{}@{}/{}'.
                                       format(user,  # USER
                                              password,  # PASSWORD

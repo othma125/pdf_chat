@@ -15,7 +15,7 @@ CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 # USER=admin PASSWORD=admin_pwd DB=pdf_chat_db HOST=localhost python3 -m api.app
 
-@app.route('/status', methods=['GET'], strict_slashes=False)
+@app.route('/api/status', methods=['GET'], strict_slashes=False)
 def status():
     """ Status of API """
     return jsonify({"status": "OK"})

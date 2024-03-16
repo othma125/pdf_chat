@@ -36,7 +36,7 @@ Welcome to the PDF Chat Web Application repository. This innovative application 
 ### Frontend Setup
 1. Navigate to the frontend directory:
    ```sh
-   cd path/to/frontend
+   cd chatpdfweb
    ```
 
 2. Install necessary Node.js packages:
@@ -52,7 +52,7 @@ Welcome to the PDF Chat Web Application repository. This innovative application 
 ## Usage
 1. Start the backend server:
    ```sh
-   python app.py
+   ./run_backend.sh
    ```
 
 2. Launch the frontend (if it's a separate service):
